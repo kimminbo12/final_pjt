@@ -27,6 +27,7 @@ $ ssh-keygen
 
 
 [Terraform 소스 적용]
+※  테라폼 소스 적용 전 variable.tf  수정 및 확인 ※ 
 $ cd ~/environment/final_pjt
 $ terraform init
 $ terraform plan
@@ -36,10 +37,12 @@ $ terraform apply --auto-approve
 [어플리케이션 소스 적용]
 WebAppRepo.zip 파일을 ~/environment에 복사
 $ git clone https://git-codecommit.[리전 ID].amazonaws.com/v1/repos/WebAppRepo
-(예 git clone https://git-codecommit.us-west-1.amazonaws.com/v1/repos/WebAppRepo)
+(예 git clone https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/WebAppRepo)
 $ unzip WebAppRepo.zip
-$ cd WebAppRepo
+$ cd ~/environment/WebAppRepo
 $ git add *
+$ git config --global user.email "you@example.com"
+$ git config --global user.name "Your Name"
 $ git commit -m "Initial Commit"
 $ git push -u origin master
 CodePipeline 서비스 → 파이프라인 → 파이프라인 이름(userXX-CodePipeline) → 우측 상단쯤 재시작 버튼 클릭
@@ -50,4 +53,7 @@ Source - Build - Deploy 모두 성공(초록색) 확인
 for($i=0;$i -lt 3600;$i++){wget [여기에 로드밸런서 DNS 주소(http로 시작하는 주소) 붙여넣기];start-sleep -Seconds 1}
 - 아래 사례 참고
 for($i=0;$i -lt 3600;$i++){wget http://user111a-alb-8080-1993274192.us-east-2.elb.amazonaws.com:8080;start-sleep -Seconds 1}
-for($i=0;$i -lt 3600;$i++){wget http://user01-alb2-742064812.ap-northeast-2.elb.amazonaws.com;start-sleep -Seconds 1}
+for($i=0;$i -lt 3600;$i++){wget http://user11-alb1-1930552587.eu-west-1.elb.amazonaws.com/;start-sleep -Seconds 1}
+- 아래 두 서비스 상태를 확인해서 인스턴스가 증가하는지 확인
+CloudWatch 서비스 → 경보 → TargetTracking-(중략)-AlarmHigh-(후략) 클릭 → 그래프 확인
+EC2 서비스 → Auto Scaling 그룹 → 해당 Auto Scaling 그룹에서 인스턴스 숫자 등 확인

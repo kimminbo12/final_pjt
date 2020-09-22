@@ -2,11 +2,11 @@
 최종 테스트용
 
 [사전 환경 설정]
-- IAM 보안자격 증명 탭에서 Access Key 및 CodeCommit 자격증명 생성
-IAM 서비스 → 사용자 → 보안자격증명 탭 → 액세스키 만들기 and CodeCommit 자격증명만들기
-
 - Cloud9 temporary credentials 해제
 Cloud9 → 기어모양(Preferences) → AWS Settings → AWS managed temporary credentials 체크 해제
+
+- IAM 보안자격 증명 탭에서 Access Key 및 CodeCommit 자격증명 생성
+IAM 서비스 → 사용자 → 보안자격증명 탭 → 액세스키 만들기 and CodeCommit 자격증명만들기
 
 - Cloud9 CLI 환경 설정에 Access key 및 PATH 등록
 $ echo "export AWS_ACCESS_KEY_ID=[키 ID 입력]" >> ~/.bash_profile
@@ -36,6 +36,7 @@ $ terraform apply --auto-approve
 
 [어플리케이션 소스 적용]
 WebAppRepo.zip 파일을 ~/environment에 복사
+$ cd ~/environment
 $ git clone https://git-codecommit.[리전 ID].amazonaws.com/v1/repos/WebAppRepo
 (예 git clone https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/WebAppRepo)
 $ unzip WebAppRepo.zip
@@ -46,7 +47,10 @@ $ git config --global user.name "Your Name"
 $ git commit -m "Initial Commit"
 $ git push -u origin master
 CodePipeline 서비스 → 파이프라인 → 파이프라인 이름(userXX-CodePipeline) → 우측 상단쯤 재시작 버튼 클릭
-Source - Build - Deploy 모두 성공(초록색) 확인
+Source - Build - Deploy 모두 성공(초록색) 확인 후 아래 테스트
+EC2 서비스 → 로드밸런서 → 해당 ALB 선택 → DNS 이름 복사 → 인터넷 브라우저에 붙여넣기
+"A Sample web application: Demo" 제목의 웹페이지가 보이면 성공
+
 
 [테스트]
 - Windows Powershell Script (로드밸런서 DNS 주소(http주소)를 복사하여 wget 이후부터 ;start-sleep 전까지의 http 주소를 치환)

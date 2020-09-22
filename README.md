@@ -43,7 +43,7 @@ $ git add *
 $ git commit -m "Initial Commit"
 $ git push -u origin master
 CodePipeline 서비스 → 파이프라인 → 파이프라인 이름(userXX-CodePipeline) → 우측 상단쯤 재시작 버튼 클릭
-Source - Build - Deploy 모두 성공 확인
+Source - Build - Deploy 모두 성공(초록색) 확인
 
 [테스트]
 - Windows Powershell Script (로드밸런서 DNS 주소(http주소)를 복사하여 wget 이후부터 ;start-sleep 전까지의 http 주소를 치환)

@@ -35,7 +35,8 @@ $ terraform apply --auto-approve
 
 
 [어플리케이션 소스 적용]
-WebAppRepo.zip 파일을 ~/environment에 복사
+WebAppRepo.zip 파일을 ~/environment로 이동 (실제 시험 때는 별도로 받아야 할듯)
+$ mv ~/environment/final_pjt/WebAppRepo.zip ~/environment/
 $ cd ~/environment
 $ git clone https://git-codecommit.[리전 ID].amazonaws.com/v1/repos/WebAppRepo
 (예 git clone https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/WebAppRepo)

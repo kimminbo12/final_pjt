@@ -2,21 +2,25 @@
 최종 테스트용
 
 [사전 환경 설정]
+- Cloud9 IDE 생성
+Cloud9 서비스 → Create Environment 클릭하여 IDE 생성
 - Cloud9 temporary credentials 해제
 Cloud9 → 기어모양(Preferences) → AWS Settings → AWS managed temporary credentials 체크 해제
 
-- IAM 보안자격 증명 탭에서 Access Key 및 CodeCommit 자격증명 생성
-IAM 서비스 → 사용자 → 보안자격증명 탭 → 액세스키 만들기 and CodeCommit 자격증명만들기
-
-- Cloud9 CLI 환경 설정에 Access key 및 PATH 등록
+- Access Key 생성 및 PATH 등록
+IAM 서비스 → 사용자 → 보안자격증명 탭 → 액세스키 만들기 버튼 클릭 (아래 CMD 수행 위해 팝업창 유지)
 $ echo "export AWS_ACCESS_KEY_ID=[키 ID 입력]" >> ~/.bash_profile
 $ echo "export AWS_SECRET_ACCESS_KEY=[키 값 입력]" >> ~/.bash_profile
 $ echo "export AWS_DEFAULT_REGION=[리전 ID 입력]" >> ~/.bash_profile
 $ echo "export PATH=$PATH:~/environment" >> ~/.bash_profile
 $ source ~/.bash_profile
 
+- CodeCommit 자격증명 생성
+IAM 서비스 → 사용자 → 보안자격증명 탭 → AWS CodeCommit에 대한 HTTPS Git 자격 증명 항목 → 자격증명 생성 버튼 클릭
+
 - Terraform 소프트웨어 다운로드 및 압축 해제
 브라우저에서 https://www.terraform.io/downloads.html 에 접속하여 Linux 64-bit 다운로드 링크 복사 
+$ cd ~/environment
 $ wget https://releases.hashicorp.com/terraform/0.13.3/terraform_0.13.3_linux_amd64.zip
 $ unzip terraform_0.13.3_linux_amd64.zip
 
